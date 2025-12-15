@@ -16,8 +16,12 @@ class TS3ServerInfo {
 
         std::string getName() const;
         std::string getUID() const;
-        std::string getPlatformVersion() const;
+        std::string getPlatform() const;
+        std::string getVersion() const;
+        std::string getIPAddress() const;
+        std::string getWelcomeMessage() const;
         int         getMaxClients() const;
+        int         getReservedClients() const;
         int         getClientsOnline() const;
         int         getChannelsOnline() const;
         int         getUptime() const;

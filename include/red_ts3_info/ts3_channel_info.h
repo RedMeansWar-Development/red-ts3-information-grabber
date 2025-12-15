@@ -22,6 +22,7 @@ class TS3ChannelInfo {
         int         getChannelIconID() const;
         uint64      getParentChannelID() const;
         bool        isDefaultChannel() const;
+        
         std::string formatInfo() const;
 
     private:
