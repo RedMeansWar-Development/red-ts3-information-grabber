@@ -2,6 +2,7 @@
 
 #include <string>
 #include <sstream>
+#include <chrono>
 
 #include <teamspeak/public_definitions.h>
 #include <teamspeak/public_errors.h>
@@ -28,6 +29,7 @@ class TS3ServerInfo {
         int         getDownloadQuota() const;
         int         getUploadQuota() const;
         int         getSecurityLevel() const;
+        int         getServerCreatedAt() const;
 
         std::string formatInfo() const;
     

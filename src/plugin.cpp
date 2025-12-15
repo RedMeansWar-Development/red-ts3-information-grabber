@@ -1,3 +1,4 @@
+#include <red_ts3_info/export.h>
 #include <red_ts3_info/common.h>
 #include <red_ts3_info/plugin.h>
 #include <red_ts3_info/ts3_client_info.h>
@@ -8,19 +9,6 @@ using namespace std;
 
 struct TS3Functions ts3Functions;
 static char* pluginID = NULL;
-
-#ifdef _WIN32
-static int wcharToUtf8(const wchar_t* str, char** result)
-{
-    int outlen = WideCharToMultiByte(CP_UTF8, 0, str, -1, 0, 0, 0, 0);
-    *result = (char*)malloc(outlen);
-    if (WideCharToMultiByte(CP_UTF8, 0, str, -1, *result, outlen, 0, 0) == 0) {
-        *result = NULL;
-        return -1;
-    }
-    return 0;
-}
-#endif // _WIN32
 
 const char* ts3plugin_name() { return RED_TS3_PLUGIN_NAME; }
 const char* ts3plugin_version() { return RED_TS3_PLUGIN_VERSION; }

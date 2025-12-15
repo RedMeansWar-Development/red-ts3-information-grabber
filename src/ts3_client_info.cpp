@@ -30,17 +30,11 @@ uint64 TS3ClientInfo::getChannelVar() const {
     return channelID;
 }
 
-string TS3ClientInfo::getNickname() const {
-    return getStringVar(CLIENT_NICKNAME);
-}
+string TS3ClientInfo::getNickname() const { return getStringVar(CLIENT_NICKNAME); }
 
-int TS3ClientInfo::getDatabaseID() const {
-    return getIntVar(CLIENT_DATABASE_ID);
-}
+int TS3ClientInfo::getDatabaseID() const { return getIntVar(CLIENT_DATABASE_ID); }
 
-string TS3ClientInfo::getUniqueID() const {
-    return getStringVar(CLIENT_UNIQUE_IDENTIFIER);
-}
+string TS3ClientInfo::getUniqueID() const { return getStringVar(CLIENT_UNIQUE_IDENTIFIER); }
 
 string TS3ClientInfo::formatInfo() const {
     ostringstream info;

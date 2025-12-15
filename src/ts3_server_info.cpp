@@ -1,6 +1,7 @@
 #include <red_ts3_info/ts3_server_info.h>
 
 using namespace std;
+using namespace chrono;
 
 extern TS3Functions ts3Functions;
  
@@ -39,6 +40,60 @@ int TS3ServerInfo::getDownloadQuota() const { return getIntVar(VIRTUALSERVER_DOW
 int TS3ServerInfo::getUploadQuota() const { return getIntVar(VIRTUALSERVER_UPLOAD_QUOTA); }
 int TS3ServerInfo::getSecurityLevel() const { return getIntVar(VIRTUALSERVER_NEEDED_IDENTITY_SECURITY_LEVEL); }
 int TS3ServerInfo::getReservedClients() const { return getIntVar(VIRTUALSERVER_RESERVED_SLOTS); }
+int TS3ServerInfo::getServerCreatedAt() const { return getIntVar(VIRTUALSERVER_CREATED); }
+
+string durationSince(long long seconds) {
+    // Convert Unix timestamp (seconds since epoch) → time_point
+    auto start = chrono::time_point<chrono::system_clock>{chrono::seconds{seconds}};
+    auto end   = system_clock::now();
+
+    // Convert to calendar days
+    auto start_days = floor<days>(start);
+    auto end_days   = floor<days>(end);
+
+    year_month_day ymd_start{start_days};
+    year_month_day ymd_end{end_days};
+
+    // Calculate full calendar years
+    years y = ymd_end.year() - ymd_start.year();
+
+    if (ymd_end.month() < ymd_start.month() ||
+       (ymd_end.month() == ymd_start.month() &&
+        ymd_end.day()   < ymd_start.day()))
+    {
+        y -= years{1};
+    }
+
+    // Advance start by full years
+    auto adjusted_start = sys_days{ymd_start + y};
+
+    // Remaining duration
+    auto remaining = end - adjusted_start;
+
+    auto d = duration_cast<days>(remaining);
+    remaining -= d;
+
+    auto h = duration_cast<hours>(remaining);
+    remaining -= h;
+
+    auto m = duration_cast<minutes>(remaining);
+    remaining -= m;
+
+    auto s = duration_cast<std::chrono::seconds>(remaining);
+
+    string result;
+
+    if (y.count() > 0)
+        result += to_string(y.count()) + " years, ";
+
+    result +=
+        to_string(d.count()) + " days, " +
+        to_string(h.count()) + " hours, " +
+        to_string(m.count()) + " minutes, " +
+        to_string(s.count()) + " seconds";
+
+    return result;
+}
 
 string TS3ServerInfo::formatInfo() const {
     ostringstream info;
@@ -48,6 +103,8 @@ string TS3ServerInfo::formatInfo() const {
 
     string maxDownloadQuotaStr = maxDownloadQuota == -1 ? "Unlimited" : to_string(maxDownloadQuota);
     string maxUploadQuotaStr = maxDownloadQuota == -1 ? "Unlimited" : to_string(maxUploadQuota);
+    string uptimeStr = durationSince(getUptime());
+    string createdAtStr = durationSince(getServerCreatedAt());
 
     info << "[b]Server Name:[/b] [color=#00ff00]" << getName() << "[/color]\n";
     info << "[b]Server UID:[/b] [color=#00ff00]" << getUID() << "[/color]\n";
@@ -56,7 +113,8 @@ string TS3ServerInfo::formatInfo() const {
     info << "[b]Clients Online:[/b] [color=#00ff00]" << getClientsOnline()
          << "/" << getMaxClients() << " (-" << getReservedClients() << " Reserved)[/color]\n";
     info << "[b]Channels:[/b] [color=#00ff00]" << getChannelsOnline() << "[/color]\n";
-    info << "[b]Uptime (s):[/b] [color=#00ff00]" << getUptime() << "[/color]\n";
+    info << "[b]Uptime (s):[/b] [color=#00ff00] " << getUptime() << " (" << uptimeStr << ")" << "[/color]\n";
+    info << "[b]Created At (s):[/b] [color=#00ff00] " << getUptime() << " (" << createdAtStr << ")" << "[/color]\n";
     info << "[b]Download Quota:[/b] [color=#00ff00]" << maxDownloadQuotaStr << "[/color]\n";
     info << "[b]Upload Quota:[/b] [color=#00ff00]" << maxUploadQuotaStr << "[/color]\n";
     info << "[b]Security Level:[/b] [color=#00ff00]" << getSecurityLevel() << "[/color]\n";

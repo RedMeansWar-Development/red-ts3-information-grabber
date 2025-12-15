@@ -30,29 +30,15 @@ uint64 TS3ChannelInfo::getUInt64Var(size_t flag) const {
     return val;
 }
 
-string TS3ChannelInfo::getName() const {
-    return getStringVar(CHANNEL_NAME);
-}
+string TS3ChannelInfo::getName() const { return getStringVar(CHANNEL_NAME); }
 
-int TS3ChannelInfo::getMaxClients() const {
-    return getIntVar(CHANNEL_MAXCLIENTS);
-}
+int TS3ChannelInfo::getMaxClients() const { return getIntVar(CHANNEL_MAXCLIENTS); }
+int TS3ChannelInfo::getNeededTalkPower() const { return getIntVar(CHANNEL_NEEDED_TALK_POWER); }
+int TS3ChannelInfo::getChannelID() const { return getIntVar(CHANNEL_UNIQUE_IDENTIFIER); }
+int TS3ChannelInfo::getChannelIconID() const { return getIntVar(CHANNEL_ICON_ID); }
 
-int TS3ChannelInfo::getNeededTalkPower() const {
-    return getIntVar(CHANNEL_NEEDED_TALK_POWER);
-}
+bool TS3ChannelInfo::isPasswordProtected() const { return getIntVar(CHANNEL_FLAG_PASSWORD) != 0; }
 
-bool TS3ChannelInfo::isPasswordProtected() const {
-    return getIntVar(CHANNEL_FLAG_PASSWORD) != 0;
-}
-
-int TS3ChannelInfo::getChannelID() const {
-    return getIntVar(CHANNEL_UNIQUE_IDENTIFIER);
-}
-
-int TS3ChannelInfo::getChannelIconID() const {
-    return getIntVar(CHANNEL_ICON_ID);
-}
 
 uint64 TS3ChannelInfo::getParentChannelID() const {
     uint64 parentID = 0;
@@ -61,9 +47,7 @@ uint64 TS3ChannelInfo::getParentChannelID() const {
     return parentID;
 }
 
-bool TS3ChannelInfo::isDefaultChannel() const {
-    return getParentChannelID() == 0;
-}
+bool TS3ChannelInfo::isDefaultChannel() const { return getParentChannelID() == 0; }
 
 string TS3ChannelInfo::formatInfo() const {
     ostringstream info;
