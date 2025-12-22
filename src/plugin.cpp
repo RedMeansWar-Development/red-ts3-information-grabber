@@ -35,6 +35,7 @@ void ts3plugin_shutdown() {
 string getServerInfo(uint64 serverConnectionHandlerID) {
     ostringstream info;
     
+    info << "[b]Version:[/b] [color=#007FFF]" << RED_TS3_PLUGIN_VERSION << "[/color]\n";
     info << "[b][color=#ff9900]--- SERVER INFO ---[/color][/b]\n";
 
     TS3ServerInfo server(serverConnectionHandlerID);
@@ -46,6 +47,7 @@ string getServerInfo(uint64 serverConnectionHandlerID) {
 string getClientInfo(uint64 serverConnectionHandlerID, uint64 clientID) {
     ostringstream info;
 
+    info << "[b]Version:[/b] [color=#007FFF]" << RED_TS3_PLUGIN_VERSION << "[/color]\n";
     info << "[b][color=#99ff33]--- CLIENT INFO ---[/color][/b]\n";
     
     TS3ClientInfo client(serverConnectionHandlerID, static_cast<anyID>(clientID));
@@ -57,6 +59,7 @@ string getClientInfo(uint64 serverConnectionHandlerID, uint64 clientID) {
 string getChannelInfo(uint64 serverConnectionHandlerID, uint64 channelID) {
     ostringstream info;
 
+    info << "[b]Version:[/b] [color=#007FFF]" << RED_TS3_PLUGIN_VERSION << "[/color]\n";
     info << "[b][color=#33ccff]--- CHANNEL INFO ---[/color][/b]\n";
 
     TS3ChannelInfo channel(serverConnectionHandlerID, static_cast<anyID>(channelID));
