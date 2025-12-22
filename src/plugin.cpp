@@ -4,7 +4,7 @@
 #include <red_ts3_info/ts3_client_info.h>
 #include <red_ts3_info/ts3_server_info.h>
 #include <red_ts3_info/ts3_channel_info.h>
-#include <red_ts3_info/ts3_connection_info.h>
+// #include <red_ts3_info/ts3_connection_info.h>
 
 using namespace std;
 
@@ -65,16 +65,16 @@ string getChannelInfo(uint64 serverConnectionHandlerID, uint64 channelID) {
     return info.str();
 }
 
-string getConnectionInfo(uint64 serverConnectionHandler) {
-    ostringstream info;
+// string getConnectionInfo(uint64 serverConnectionHandler) {
+//     ostringstream info;
 
-    info << "[b][color=#33ccff]--- CONNECTION INFO ---[/color][/b]\n";
+//     info << "[b][color=#33ccff]--- CONNECTION INFO ---[/color][/b]\n";
 
-    TS3ConnectionInfo connection(serverConnectionHandler);
+//     TS3ConnectionInfo connection(serverConnectionHandler);
 
-    info << connection.formatInfo();
-    return info.str();
-}
+//     info << connection.formatInfo();
+//     return info.str();
+// }
 
 // text display
 const char* ts3plugin_infoTitle() { return RED_TS3_PLUGIN_NAME; }
