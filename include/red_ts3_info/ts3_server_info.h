@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include <chrono>
+#include <format>
 
 #include <teamspeak/public_definitions.h>
 #include <teamspeak/public_errors.h>
