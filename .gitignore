@@ -22,3 +22,4 @@ CMakeUserPresets.json
 out
 build-mac
 TSInstaller.exe
+verify_ts3plugin.exe
