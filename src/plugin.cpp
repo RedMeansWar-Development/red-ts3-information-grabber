@@ -1,4 +1,3 @@
-#include <red_ts3_info/export.h>
 #include <red_ts3_info/common.h>
 #include <red_ts3_info/plugin.h>
 #include <red_ts3_info/ts3_client_info.h>
