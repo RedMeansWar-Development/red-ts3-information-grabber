@@ -1,10 +1,9 @@
-#include <red_ts3_info/export.h>
 #include <red_ts3_info/common.h>
 #include <red_ts3_info/plugin.h>
 #include <red_ts3_info/ts3_client_info.h>
 #include <red_ts3_info/ts3_server_info.h>
 #include <red_ts3_info/ts3_channel_info.h>
-#include <red_ts3_info/ts3_connection_info.h>
+// #include <red_ts3_info/ts3_connection_info.h>
 
 using namespace std;
 
@@ -35,6 +34,7 @@ void ts3plugin_shutdown() {
 string getServerInfo(uint64 serverConnectionHandlerID) {
     ostringstream info;
     
+    info << "[b]Version:[/b] [color=#007FFF]" << RED_TS3_PLUGIN_VERSION << "[/color]\n";
     info << "[b][color=#ff9900]--- SERVER INFO ---[/color][/b]\n";
 
     TS3ServerInfo server(serverConnectionHandlerID);
@@ -46,6 +46,7 @@ string getServerInfo(uint64 serverConnectionHandlerID) {
 string getClientInfo(uint64 serverConnectionHandlerID, uint64 clientID) {
     ostringstream info;
 
+    info << "[b]Version:[/b] [color=#007FFF]" << RED_TS3_PLUGIN_VERSION << "[/color]\n";
     info << "[b][color=#99ff33]--- CLIENT INFO ---[/color][/b]\n";
     
     TS3ClientInfo client(serverConnectionHandlerID, static_cast<anyID>(clientID));
@@ -57,6 +58,7 @@ string getClientInfo(uint64 serverConnectionHandlerID, uint64 clientID) {
 string getChannelInfo(uint64 serverConnectionHandlerID, uint64 channelID) {
     ostringstream info;
 
+    info << "[b]Version:[/b] [color=#007FFF]" << RED_TS3_PLUGIN_VERSION << "[/color]\n";
     info << "[b][color=#33ccff]--- CHANNEL INFO ---[/color][/b]\n";
 
     TS3ChannelInfo channel(serverConnectionHandlerID, static_cast<anyID>(channelID));
@@ -65,16 +67,16 @@ string getChannelInfo(uint64 serverConnectionHandlerID, uint64 channelID) {
     return info.str();
 }
 
-string getConnectionInfo(uint64 serverConnectionHandler) {
-    ostringstream info;
+// string getConnectionInfo(uint64 serverConnectionHandler) {
+//     ostringstream info;
 
-    info << "[b][color=#33ccff]--- CONNECTION INFO ---[/color][/b]\n";
+//     info << "[b][color=#33ccff]--- CONNECTION INFO ---[/color][/b]\n";
 
-    TS3ConnectionInfo connection(serverConnectionHandler);
+//     TS3ConnectionInfo connection(serverConnectionHandler);
 
-    info << connection.formatInfo();
-    return info.str();
-}
+//     info << connection.formatInfo();
+//     return info.str();
+// }
 
 // text display
 const char* ts3plugin_infoTitle() { return RED_TS3_PLUGIN_NAME; }
