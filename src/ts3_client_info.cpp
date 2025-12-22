@@ -6,7 +6,7 @@ extern struct TS3Functions ts3Functions;
 
 TS3ClientInfo::TS3ClientInfo(uint64 schID, anyID cID) : serverConnectionHandlerID(schID), clientID(cID) {}
 
-std::string TS3ClientInfo::getStringVar(size_t flag) const {
+string TS3ClientInfo::getStringVar(size_t flag) const {
     char* tmp = nullptr;
     string result;
 
