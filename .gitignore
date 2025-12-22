@@ -19,5 +19,6 @@ CMakeUserPresets.json
 #cmake-build-*
 
 .vs
-.vscode
 out
+build-mac
+TSInstaller.exe
