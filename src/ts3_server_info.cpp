@@ -134,7 +134,7 @@ string TS3ServerInfo::formatInfo() const {
          << "/" << getMaxClients() << " (-" << getReservedClients() << " Reserved)[/color]\n";
     info << "[b]Channels:[/b] [color=#00ff00]" << getChannelsOnline() << "[/color]\n";
     info << "[b]Uptime (s):[/b] [color=#00ff00]" << getUptime() << " (" << uptimeStr << ")" << "[/color]\n";
-    info << "[b]Server Age:[/b] [color=#00ff00]" << durationSince(getServerCreatedAt()) << " ago[/color]\n"; // Fixed: was calling getUptime()
+    info << "[b]Server Age:[/b] [color=#00ff00]" << durationSince(getServerCreatedAt()) << "[/color]\n"; // Fixed: was calling getUptime()
     info << "[b]Download Quota:[/b] [color=#00ff00]" << maxDownloadQuotaStr << "[/color]\n";
     info << "[b]Upload Quota:[/b] [color=#00ff00]" << maxUploadQuotaStr << "[/color]\n";
     info << "[b]Security Level:[/b] [color=#00ff00]" << getSecurityLevel() << "[/color]\n";

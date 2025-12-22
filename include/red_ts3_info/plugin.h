@@ -10,7 +10,7 @@
 // -------------------------------------------------
 
 #define RED_TS3_PLUGIN_NAME     "RTIG"
-#define RED_TS3_PLUGIN_VERSION  "1.0.1"
+#define RED_TS3_PLUGIN_VERSION  "1.0.0"
 
 // TeamSpeak plugin API version
 #define PLUGIN_API_VERSION 26
