@@ -1,5 +1,5 @@
 # Red's TS3 Information Grabber (RTIG)
-A TeamSpeak 3 plugin that provides detailed server information in an easy-to-read format.
+A TeamSpeak 3 plugin that provides detailed client, server, and channel information in an easy-to-read format.
 
 ## Features
 - **Server Information Display**: Shows comprehensive server details including:
